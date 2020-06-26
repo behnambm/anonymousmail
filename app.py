@@ -1,5 +1,5 @@
 from flask import Flask, render_template, abort, flash, url_for
-from config import Config
+from config import Production
 from flask_bootstrap import Bootstrap
 from form import MailForm
 from flask_mail import Mail, Message
@@ -7,7 +7,7 @@ from email_validator import validate_email, EmailSyntaxError
 
 
 app = Flask(__name__)
-app.config.from_object(Config)
+app.config.from_object(Production)
 
 
 bootstrap = Bootstrap(app)
@@ -26,6 +26,7 @@ def index():
 
         try: 
             validate_email(form.mail_from.data)
+            mail_from = form.mail_from.data
         except EmailSyntaxError:
             mail_from = (form.mail_from.data, 'anonymousmail@no-reply.com')
 
@@ -39,6 +40,12 @@ def index():
         try:
             mail.send(msg)
             flash('Email has been sent successfully.', 'success')
+
+            # to make form fields empty
+            for field in form:
+                field.data = ''
+
+            return render_template('index.html', form=form)
         except: # in case of having any error while sending email
             abort(500)
 

@@ -8,7 +8,6 @@ class Config:
     MAIL_PASSWORD        = ''
     MAIL_USE_TLS         = True
     MAIL_USE_SSL         = False
-    MAIL_DEFAULT_SENDER  = ('Anonymous-Mail', 'anonymousmail@no-reply.com')
     MAIL_MAX_EMAILS      = 1  
     # ^^ because this app provides sending mail for individuals so they don't send bulk mail
 
