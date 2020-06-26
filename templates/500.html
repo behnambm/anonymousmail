@@ -1,0 +1,63 @@
+{% extends 'bootstrap/base.html' %}
+
+
+{% block navbar %}
+<nav class="navbar navbar-default navbar-static-top navbar-inverse">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">
+              <img style="height: 30px; display: inline;" src="{{ url_for('static', filename='anon-192.png')}}"> Anonymous Mail
+            </a>
+          </div>
+
+        <p class="navbar-text navbar-right" style="margin-right: 20px;"><a href="/about" class="navbar-link">About</a></p>
+    </div>
+    
+</nav>
+{% endblock %}
+
+
+
+{% block styles %}
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+{{ super() }}
+
+<link href="https://fonts.googleapis.com/css?family=Encode+Sans+Semi+Condensed:100,200,300,400" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% endblock %}
+
+
+{% block content %}
+<h1>500</h1>
+  <h2>Unexpected Error <b>:(</b></h2>
+  <div class="gears">
+    <div class="gear one">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <div class="gear two">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <div class="gear three">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript">
+    $(function() {
+        setTimeout(function(){
+            $('body').removeClass('loading');
+        }, 1000);
+    });
+
+</script>
+{% endblock %}
